@@ -16,18 +16,37 @@
 ### significance level: 0.05 
 * Null Hypothesis: Mu_Bin = Mu_Okx
 * Altnernaltive Hypothesis: Mu_Bin not equal to Mu_Okx
-* test result:
+* test result: (P_values rounded to 4)
+  |Binance| Okx|	bin_FR_Mean|	okx_FR_Mean| P_value|Test_result|
+  ---|---|---|---|---|---|
+  LINKUSDT|	LINKUSDT|	7.83E-05|	5.29E-05|	0.0015|	Reject
+  LRCUSDT|	LRCUSDT|	8.02E-05|	5.88E-05|	0.2085|	FTR
+  ETHUSDT|	ETHUSDT|	6.20E-05|	4.37E-05|	0.0009|	Reject
+  BNBUSDT|	BNBUSDT|	-0.000137271|	-0.000191163|	0.7866|	FTR
+  SOLUSDT|	SOLUSDT|	5.70E-05|	1.41E-05|	0.012|	Reject
 
-### According to our results: we are going to pick up the cryptocurrencies that have funding rate differences that may exist between the two exchanges. (Previous 24hrs)
 
-|Binance| Okx|	bin_FR|	okx_FR|	abs_diff|
----|---|---|---|---|
-LINKUSDT|	LINKUSDT|	0.0001|	-8.04E-05|	0.000180401
-LRCUSDT	|LRCUSDT|	0.0001|	0.000272194|	0.000172194
-ETHUSDT	|ETHUSDT|	0.0001|	8.30E-05|	1.70E-05
-BNBUSDT	|BNBUSDT|	0|	8.92E-05|	8.92E-05
 
-### The coin that has highest absolute difference is 
+### According to our results: we are going to pick up the cryptocurrencies with the result of Reject and obtain their funding rates.
+
+|Binance| Okx| bin_FR_Mean|	okx_FR_Mean| P_value|Test_result|	bin_FR|	okx_FR|	abs_diff|
+---|---|---|---|---|---|---|---|---|
+LINKUSDT|   LINKUSDT|     0.000078|  5.294640e-05|   0.0015|      Reject|    0.000100| -0.000080|  1.804008e-04
+ETHUSDT|    ETHUSDT|     0.000062|  4.367092e-05|   0.0009|      Reject|      0.000100|  0.000083|  1.697876e-05
+SOLUSDT|    SOLUSDT|     0.000057|  1.412787e-05|   0.0120|      Reject|     0.000100|  0.000061|  3.900329e-05
+
+### The coin with highest absolute difference is API3USDT.
+
+|Binance|        API3USDT|
+|---|---|
+Okx|          API3USDT|
+bin_FR_mean|   -0.000369
+okx_FR_mean|   -0.000182
+P_value     |     0.0356
+Test_result  |    Reject
+bin_FR  |      -0.024607
+okx_FR   |     -0.000372
+abs_diff  |     0.024235
 
 
 
