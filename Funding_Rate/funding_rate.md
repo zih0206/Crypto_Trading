@@ -9,7 +9,7 @@
 # Why is there an arbitrage opportunity between two exhcanges?
 #### （Only consider the currencies that both exchanges have)
 ## Graphically:
-
+![fund](https://github.com/zih0206/Crypto_Trading/assets/122567368/48cf916c-f4ca-46ab-ad9f-a3a50966036a)
 
 ## Statistically: 
 ### significance level: 0.05 
