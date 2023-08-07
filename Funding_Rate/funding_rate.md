@@ -9,13 +9,15 @@
 # Why is there an arbitrage opportunity between two exhcanges?
 #### （Only consider the currencies that both exchanges have)
 ## Graphically:
-![fund](https://github.com/zih0206/Crypto_Trading/assets/122567368/48cf916c-f4ca-46ab-ad9f-a3a50966036a)
+![fund](https://github.com/zih0206/Crypto_Trading/assets/122567368/9beab9e2-3879-4777-8d7b-1c4a757a7381)
+* Obviously: We can notice that the funding rates are different between Okx and Binance at 08/01/2023. 04:00:00
 
 ## Statistically: 
 ### significance level: 0.05 
 * Null Hypothesis: Mu_Bin = Mu_Okx
 * Altnernaltive Hypothesis: Mu_Bin not equal to Mu_Okx
 * test result:
+  
   
 
 
