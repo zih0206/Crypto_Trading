@@ -45,8 +45,18 @@ okx_FR_mean|   -0.000182
 P_value     |     0.0356
 Test_result  |    Reject
 bin_FR  |      -0.024607
-okx_FR   |     -0.000372
-abs_diff  |     0.024235
+okx_FR   |     -0.015
+abs_diff  |     0.03907
+
+## Trading (API3USDT)
+|Binance| Okx| bin_FR  | okx_FR   | abs_diff  |
+---|---|---|---|---|
+---|--- |-0.024607|-0.015|0.024235
+--- |--- | Short| Short|---||
+
+### We short this coin bewteen the two exchanges without leverage. (Commision fee: 0.09%. Commision fee might be different for different people)
+* Profit (Daily): (0.024607 + 0.000372)*3 - 0.09% = 0.116431 ~ 11.6%
+  
 
 
 
