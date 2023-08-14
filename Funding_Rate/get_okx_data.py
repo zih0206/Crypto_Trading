@@ -1,5 +1,8 @@
-import json
+'''
+Author: Zih0206
+'''
 
+import json
 import requests
 from datetime import datetime
 import hmac
