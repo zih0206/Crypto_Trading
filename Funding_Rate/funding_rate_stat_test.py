@@ -1,7 +1,6 @@
 '''
-Created by: Zicheng
+Author: Zih0206
 '''
-
 import pandas as pd
 import time
 from get_binance_data import Binance_data
