@@ -1,3 +1,7 @@
+'''
+Created by: Zicheng
+'''
+
 import pandas as pd
 import time
 from get_binance_data import Binance_data
