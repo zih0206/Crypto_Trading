@@ -71,9 +71,9 @@ class Okx_data(object):
         return headers
 
 
-    def _build_params(self, params:dict):
-        requery = '&'.join([f"{key}={params[key]}" for key in params.keys()])
-        return requery
+    # def _build_params(self, params:dict):
+    #     requery = '&'.join([f"{key}={params[key]}" for key in params.keys()])
+    #     return requery
 
     def get_timestamp(self):
         now = datetime.utcnow()
