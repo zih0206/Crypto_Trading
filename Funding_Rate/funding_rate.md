@@ -6,7 +6,7 @@
 # What is Funding Rate?
 ## Funding rates are periodic payments either to traders that are long or short based on the difference between perpetual contract markets and spot prices. Therefore, depending on open positions, traders will either pay or receive funding. (source: Binance)
 
-```
+```python
 # Binance:
     def get_his_fundingRate(self, symbol=None, start_time=None, end_time=None, limit=100):
         path = '/fapi/v1/fundingRate'
