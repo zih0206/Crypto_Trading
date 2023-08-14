@@ -6,6 +6,36 @@
 # What is Funding Rate?
 ## Funding rates are periodic payments either to traders that are long or short based on the difference between perpetual contract markets and spot prices. Therefore, depending on open positions, traders will either pay or receive funding. (source: Binance)
 
+```
+# Binance:
+    def get_his_fundingRate(self, symbol=None, start_time=None, end_time=None, limit=100):
+        path = '/fapi/v1/fundingRate'
+        params = {"limit": limit}
+        if symbol:
+            params['symbol'] = symbol
+        if start_time:
+            params['startTime'] = start_time
+        if end_time:
+            params['endTime'] = end_time
+        url = self.base_url + path
+        response_data = requests.get(url, params=params, timeout=self.timeout).json()
+        return response_data
+
+# Okx:
+    def get_his_fundingRate(self, instid, before=None, after=None, limit=100):
+        path = '/api/v5/public/funding-rate-history'
+        params = {'instId': instid,
+            "limit": limit}
+        if before:
+            params['before'] = before
+        if after:
+            params['after'] = after
+        url = self.base_url + path
+        response_data = requests.get(url, params=params, timeout=self.timeout).json()
+        return response_data
+
+```
+
 # Why is there an arbitrage opportunity between two exhcanges?
 #### （Only consider the currencies that both exchanges have)
 ## Graphically:
