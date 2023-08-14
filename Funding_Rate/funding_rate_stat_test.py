@@ -25,8 +25,8 @@ def statTest(sample1, sample2):
 if __name__ == '__main__':
   Bin = Binance_data()  #initial your objective
   Okx = Okx_data()
-  Time1 = 1688515200000  # Tuesday, July 4, 2023 8:00:00 PM
-  Time2 = 1688515200000
+  Time1 = 1691366400000  # Sunday, August 6, 2023 8:00:00 PM
+  Time2 = 1691366400000
 
   bin_exchange_info = Bin.get_exchange_info()['symbols']
   df = pd.DataFrame(bin_exchange_info)
@@ -36,7 +36,6 @@ if __name__ == '__main__':
   okx_coin_name = pd.DataFrame(okx_info)['uly'].apply(lambda x: x.replace('-',''))
 
 # merge two dataframe to get a big data frame
-
   merge_df = pd.merge(left=bin_coin_name, right=okx_coin_name, left_on='symbol', right_on= 'uly',how= 'inner')
   merge_df = merge_df.rename(columns={'symbol':'Binance','uly':'Okx'})
   print(merge_df)
