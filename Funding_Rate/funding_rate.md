@@ -13,6 +13,17 @@
 * Obviously: We can notice that the funding rates are different between Okx and Binance at 08/01/2023. 04:00:00
 
 ## Statistically: 
+```python
+def statTest(sample1, sample2):
+    sample1 = [float(rate) for rate in sample1]
+    sample2 = [float(rate) for rate in sample2]
+    if len(sample1) == sample2:
+        stat, p = wilcoxon(sample1, sample2, alternative= 'two-sided')
+    else:
+        stat, p = mannwhitneyu(sample1, sample2, alternative='two_sided')
+    
+    return p
+```
 ### significance level: 0.05 
 * Null Hypothesis: Mu_Bin = Mu_Okx
 * Altnernaltive Hypothesis: Mu_Bin not equal to Mu_Okx
