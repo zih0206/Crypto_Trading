@@ -5,6 +5,23 @@ from get_okx_data import Okx_data
 from scipy.stats import wilcoxon, mannwhitneyu
 
 
+'''
+We consider Nonparametric Methods. 
+Because there might have some missing values when we are getting data from the two exchanges, 
+we consider two test medthods for the problems of whether the funding rates of the token are paired or not.
+'''  
+def statTest(sample1, sample2):
+    # Convert string lists to float lists
+    sample1 = [float(rate) for rate in sample1]
+    sample2 = [float(rate) for rate in sample2]
+    if len(sample1) == sample2:
+        stat, p = wilcoxon(sample1, sample2, alternative= 'two-sided')
+    else:
+        stat, p = mannwhitneyu(sample1, sample2, alternative='two_sided')
+    
+    return p
+
+
 if __name__ == '__main__':
   Bin = Binance_data()  #initial your objective
   Okx = Okx_data()
@@ -39,4 +56,45 @@ if __name__ == '__main__':
           time.sleep(5)
   
   merge_df['bin_FR_mean'] = bin_means
+
+# Similarly, get funding rates in Okx and get mean values, and upload to our dataframe
+Okx_merge_df = merge_df.Okx.apply(lambda x: x.replace('USDT','-USDT-SWAP')).tolist()
+okx_means=[]
+for i in Okx_merge_df:
+  try:
+    fd_his_data = Okx.get_his_fundingRate(instid=i,before=Time2,limit=100)
+    rates_okx = [entry['fundingRate'] for entry in fd_his_data['data']]
+    mean_rate_okx = pd.Series(rates_okx).astype(float).mean()
+    okx_means.append(mean_rate_okx)
+  except Exception as e:
+    print(f"An error occurred with item {item}: {e}")
+    okx_means.append(None)
+  finally:
+    time.sleep(5)
+merge_df['okx_FR_mean'] = okx_means
+
+# Calculate P-value
+P_value=[]
+for bin_symbol, okx_symbol in zip(merge_df.Binance, Okx_merge_df):
+  try:
+    his_data_ =Bin.get_his_fundingRate(symbol=bin_symbol, start_time=Time1, limit=100)
+    rates_bin= [entry['fundingRate'] for entry in his_data_]
+    
+    fd_his_data = Okx.get_his_fundingRate(instid=okx_symbol, before= Time2, limit=100)
+    rates_okx1 = [entry['fundingRate'] for entry in fd_his_data['data']]
+  except Exception as e:
+    print(f"An error occurred with item {item}: {e}")
+  else:
+    P_value.append(statTest(rates_bin, rates_okx1))
+  finally:
+    time.sleep(5)
+
+# update p_value to merged data frame
+merge_df['P_value'] = P_value
+merge_df['P_value'] = merge_df['P_value'].round(4)
+
+# update test result
+merge_df['Test_result'] = 0
+merge_df['Test_result'] = np.where(merge_df['P_value']>0.05,'FTR','Reject')
+print(merge_df)
   
