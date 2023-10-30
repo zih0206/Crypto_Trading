@@ -1,3 +1,3 @@
-# This project relates a doule EMA strategy.
+# This project relates a double EMA strategy.
 ## Exchange: Binance
 
